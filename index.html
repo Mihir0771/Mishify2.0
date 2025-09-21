@@ -214,7 +214,7 @@
         ui.loginButton.addEventListener('click', () => {
             const scope = 'user-read-email user-read-private user-modify-playback-state user-read-playback-state user-read-currently-playing';
             // FIX: This URL was incorrect. It now points to the official Spotify accounts service.
-            const authUrl = `https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&response_type=token&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(scope)}`;
+            const authUrl = `https://api.spotify.com/v1$...5{SPOTIFY_CLIENT_ID}&response_type=token&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(scope)}`;
             window.location.href = authUrl;
         });
 
@@ -235,7 +235,7 @@
             if (!accessToken) return null;
             try {
                 // FIX: This URL was incorrect. It now points to the official Spotify API v1.
-                const res = await fetch(`https://api.spotify.com/v1${endpoint}`, {
+                const res = await fetch(`https://api.spotify.com/v1$...6{endpoint}`, {
                     ...options,
                     headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json', ...options.headers },
                 });
